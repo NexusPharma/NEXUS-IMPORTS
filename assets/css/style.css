@@ -1,0 +1,426 @@
+/* ==================================================
+   NEXUS IMPORTS
+   STYLE.CSS
+==================================================*/
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+:root{
+
+    --preto:#090909;
+    --preto2:#111111;
+    --dourado:#C9A227;
+    --branco:#ffffff;
+    --cinza:#C8C8C8;
+    --verde:#25D366;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+    background:var(--preto);
+    color:white;
+    overflow-x:hidden;
+
+}
+
+/* ================= HEADER ================= */
+
+header{
+
+    position:fixed;
+
+    width:100%;
+
+    top:0;
+
+    left:0;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:22px 8%;
+
+    background:rgba(10,10,10,.70);
+
+    backdrop-filter:blur(15px);
+
+    z-index:999;
+
+}
+
+.logo{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    letter-spacing:2px;
+
+}
+
+.logo span{
+
+    color:var(--dourado);
+
+}
+
+nav{
+
+    display:flex;
+
+    gap:35px;
+
+}
+
+nav a{
+
+    color:white;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+    font-weight:500;
+
+}
+
+nav a:hover{
+
+    color:var(--dourado);
+
+}
+
+.btn-whatsapp{
+
+    background:var(--verde);
+
+    color:white;
+
+    padding:12px 26px;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.btn-whatsapp:hover{
+
+    transform:translateY(-3px);
+
+}
+
+/* ================= HERO ================= */
+
+/* HERO */
+
+.hero{
+
+    min-height:100vh;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:120px 20px 80px;
+
+    background:
+linear-gradient(rgba(0,0,0,.65), rgba(0,0,0,.82))
+url("../images/hero/hero-banner.jpg");
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+}
+
+.hero-content{
+    max-width:900px;
+    margin:auto;
+    position:relative;
+    top:-40px;
+}
+
+.hero h1{
+
+    font-size:68px;
+
+    font-weight:800;
+
+    line-height:1.1;
+
+    margin-bottom:25px;
+
+}
+
+.hero-subtitle{
+
+    font-size:28px;
+
+    color:#C9A227;
+
+    margin-bottom:30px;
+
+    font-weight:600;
+
+}
+
+.hero-description{
+
+    max-width:700px;
+
+    margin:0 auto 45px;
+
+    color:#e4e4e4;
+
+    line-height:1.8;
+
+    font-size:21px;
+
+}
+
+.hero-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+.btn{
+
+    background:var(--dourado);
+
+    color:black;
+
+    text-decoration:none;
+
+    padding:18px 45px;
+
+    border-radius:40px;
+
+    font-weight:700;
+
+    transition:.35s;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 15px 30px rgba(201,162,39,.35);
+
+}
+
+.btn-outline{
+
+    border:2px solid var(--dourado);
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:18px 45px;
+
+    border-radius:40px;
+
+    transition:.35s;
+
+}
+
+.btn-outline:hover{
+
+    background:var(--dourado);
+
+    color:black;
+
+}
+/* ===========================
+   SEÇÕES
+=========================== */
+
+section{
+    padding:100px 8%;
+}
+
+section h2{
+    text-align:center;
+    font-size:42px;
+    margin-bottom:60px;
+}
+
+/* ===========================
+   CARDS
+=========================== */
+
+.cards{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:#111;
+
+    border:1px solid rgba(255,255,255,.06);
+
+    border-radius:20px;
+
+    padding:35px;
+
+    transition:.35s;
+
+    cursor:pointer;
+
+}
+
+.card:hover{
+
+    transform:translateY(-10px);
+
+    border-color:#C9A227;
+
+    box-shadow:0 25px 40px rgba(0,0,0,.45);
+
+}
+
+.card h3{
+
+    font-size:24px;
+
+    margin-bottom:20px;
+
+}
+
+.card p{
+
+    color:#cfcfcf;
+
+    line-height:1.7;
+
+}
+
+/* ===========================
+   DESTAQUES
+=========================== */
+
+#destaques{
+
+    background:#0D0D0D;
+
+}
+
+/* ===========================
+   PEPTÍDEOS
+=========================== */
+
+#peptideos{
+
+    background:#090909;
+
+}
+
+/* ===========================
+   SOBRE
+=========================== */
+
+#sobre{
+
+    background:#101010;
+
+}
+
+/* ===========================
+   CONTATO
+=========================== */
+
+#contato{
+
+    text-align:center;
+
+}
+
+#contato p{
+
+    color:#cfcfcf;
+
+    margin-bottom:35px;
+
+    font-size:18px;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+
+footer{
+
+    background:#050505;
+
+    padding:70px 8%;
+
+    text-align:center;
+
+}
+
+footer h3{
+
+
+}
+
+footer span{
+
+    color:#C9A227;
+
+}
+
+footer p{
+
+    color:#bdbdbd;
+
+    margin:10px 0;
+
+}
+
+footer small{
+
+    display:block;
+
+    margin-top:35px;
+
+    color:#777;
+
+}
