@@ -8,9 +8,19 @@ const resultCount=document.querySelector('#result-count');
 const emptyState=document.querySelector('#empty-state');
 const backTop=document.querySelector('#back-top');
 let currentCategory='todos';
+let searchTimer;
+
+function whatsappUrl(product=''){
+  const message=product?`?text=${encodeURIComponent(`Olá! Gostaria de consultar informações sobre ${product} na NEXUS IMPORTS.`)}`:'';
+  return `https://wa.me/${WHATSAPP}${message}`;
+}
+
+document.querySelectorAll('[data-wa-link]').forEach(link=>{
+  link.href=whatsappUrl();
+});
 
 function setMenu(open){nav?.classList.toggle('open',open);menuBtn?.setAttribute('aria-expanded',String(open));}
-menuBtn?.addEventListener('click',()=>setMenu(!nav.classList.contains('open')));
+menuBtn?.addEventListener('click',()=>setMenu(!(nav?.classList.contains('open'))));
 document.querySelectorAll('.nav-link').forEach(link=>link.addEventListener('click',()=>setMenu(false)));
 
 document.addEventListener('click',e=>{
@@ -21,7 +31,11 @@ document.addEventListener('click',e=>{
 
 function updateCatalog(category=currentCategory,term=search?.value.trim().toLowerCase()||''){
   currentCategory=category;
-  tabs.forEach(tab=>{const active=tab.dataset.category===category;tab.classList.toggle('active',active);tab.setAttribute('aria-selected',String(active));});
+  tabs.forEach(tab=>{
+    const active=tab.dataset.category===category;
+    tab.classList.toggle('active',active);
+    tab.setAttribute('aria-selected',String(active));
+  });
   let visible=0;
   categories.forEach(section=>{
     const categoryMatch=category==='todos'||section.dataset.category===category;
@@ -29,7 +43,8 @@ function updateCatalog(category=currentCategory,term=search?.value.trim().toLowe
     section.querySelectorAll('.catalog-product').forEach(product=>{
       const haystack=`${product.dataset.name||''} ${product.dataset.search||''}`.toLowerCase();
       const show=categoryMatch&&(!term||haystack.includes(term));
-      product.hidden=!show;if(show){sectionVisible++;visible++;}
+      product.hidden=!show;
+      if(show){sectionVisible++;visible++;}
     });
     section.hidden=sectionVisible===0;
   });
@@ -37,12 +52,27 @@ function updateCatalog(category=currentCategory,term=search?.value.trim().toLowe
   if(emptyState)emptyState.hidden=visible!==0;
 }
 
-tabs.forEach(tab=>tab.addEventListener('click',()=>updateCatalog(tab.dataset.category)));
-search?.addEventListener('input',()=>updateCatalog());
+tabs.forEach((tab,index)=>{
+  tab.addEventListener('click',()=>updateCatalog(tab.dataset.category));
+  tab.addEventListener('keydown',e=>{
+    if(!['ArrowRight','ArrowDown','ArrowLeft','ArrowUp','Home','End'].includes(e.key))return;
+    e.preventDefault();
+    let next=index;
+    if(e.key==='ArrowRight'||e.key==='ArrowDown')next=(index+1)%tabs.length;
+    if(e.key==='ArrowLeft'||e.key==='ArrowUp')next=(index-1+tabs.length)%tabs.length;
+    if(e.key==='Home')next=0;
+    if(e.key==='End')next=tabs.length-1;
+    tabs[next].focus();
+  });
+});
+
+search?.addEventListener('input',()=>{
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(()=>updateCatalog(),150);
+});
 
 function openWhatsApp(product){
-  const message=encodeURIComponent(`Olá! Gostaria de consultar informações sobre ${product} na NEXUS IMPORTS.`);
-  window.open(`https://wa.me/${WHATSAPP}?text=${message}`,'_blank','noopener');
+  window.open(whatsappUrl(product||'um produto'),'_blank','noopener');
 }
 document.querySelectorAll('.product-action').forEach(button=>button.addEventListener('click',()=>openWhatsApp(button.dataset.wa||'um produto')));
 
