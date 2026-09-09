@@ -497,3 +497,9 @@ footer{padding-top:42px}
   .catalog-product{min-height:370px}
   .catalog-product-image{height:190px;flex-basis:190px}
 }
+
+
+/* Banner completo — sem corte e sem CTA sobreposto */
+.hero-banner{aspect-ratio:auto !important;height:auto !important;overflow:hidden !important;}
+.hero-banner img{width:100% !important;height:auto !important;aspect-ratio:auto !important;object-fit:contain !important;display:block !important;}
+@media(max-width:760px){.hero-banner{aspect-ratio:auto !important;height:auto !important;} .hero-banner img{height:auto !important;width:100% !important;object-fit:contain !important;}}
