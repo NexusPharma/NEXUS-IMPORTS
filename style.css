@@ -597,3 +597,98 @@ footer{padding-top:42px}
   }
   .mobile-bottom-nav a{width:62px !important;}
 }
+
+/* ===== CORREÇÃO DEFINITIVA — MOBILE ===== */
+@media (max-width:760px){
+  /* Banner grande, abaixo do conteúdo do hero, preservando a proporção original */
+  .hero{
+    display:grid !important;
+    grid-template-columns:minmax(0,1fr) !important;
+    width:100% !important;
+    max-width:none !important;
+    min-height:auto !important;
+    padding-left:16px !important;
+    padding-right:16px !important;
+    gap:0 !important;
+  }
+  .hero-copy{
+    grid-column:1 !important;
+    width:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+  }
+  .hero-banner{
+    grid-column:1 !important;
+    position:relative !important;
+    display:block !important;
+    float:none !important;
+    width:100% !important;
+    min-width:0 !important;
+    max-width:none !important;
+    height:auto !important;
+    aspect-ratio:1717 / 916 !important;
+    margin:34px 0 0 !important;
+    padding:0 !important;
+    transform:none !important;
+    border-radius:18px !important;
+    overflow:hidden !important;
+  }
+  .hero-banner img{
+    display:block !important;
+    width:100% !important;
+    height:100% !important;
+    max-width:none !important;
+    min-width:0 !important;
+    object-fit:contain !important;
+    object-position:center !important;
+  }
+  .hero-banner .banner-cta{display:none !important;}
+
+  /* Barra inferior: grupo de 3 itens realmente centralizado */
+  .mobile-bottom-nav{
+    position:fixed !important;
+    left:0 !important;
+    right:0 !important;
+    bottom:0 !important;
+    width:100% !important;
+    height:72px !important;
+    display:flex !important;
+    flex-direction:row !important;
+    align-items:stretch !important;
+    justify-content:center !important;
+    gap:54px !important;
+    padding:6px 0 8px !important;
+    box-sizing:border-box !important;
+  }
+  .mobile-bottom-nav a{
+    flex:0 0 72px !important;
+    width:72px !important;
+    max-width:72px !important;
+    min-width:72px !important;
+    margin:0 !important;
+    padding:0 !important;
+    justify-self:auto !important;
+    text-align:center !important;
+  }
+}
+@media (max-width:390px){
+  .mobile-bottom-nav{gap:34px !important;}
+  .mobile-bottom-nav a{
+    flex-basis:62px !important;
+    width:62px !important;
+    max-width:62px !important;
+    min-width:62px !important;
+  }
+}
+
+/* NEXUS VIP em destaque — principal conversão do site */
+.promo-group{padding-top:34px;padding-bottom:46px}
+.promo-group-inner{position:relative;max-width:1160px;margin:0 auto;padding:34px 38px;display:grid;grid-template-columns:96px minmax(0,1fr) auto;align-items:center;gap:28px;border:1px solid rgba(226,182,83,.38);border-radius:24px;background:radial-gradient(circle at 8% 50%,rgba(226,182,83,.18),transparent 28%),radial-gradient(circle at 90% 50%,rgba(226,182,83,.07),transparent 30%),linear-gradient(135deg,#17130d,#0b0a08 68%,#12100c);box-shadow:0 22px 65px rgba(0,0,0,.38),0 0 0 1px rgba(226,182,83,.05) inset;overflow:hidden}
+.promo-group-inner:before{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(226,182,83,.06),transparent);transform:translateX(-100%);animation:vipShine 5s ease-in-out infinite}
+@keyframes vipShine{0%,55%{transform:translateX(-100%)}75%,100%{transform:translateX(100%)}}
+.promo-vip-badge{width:82px;height:82px;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid rgba(226,182,83,.55);background:linear-gradient(145deg,#f0cc70,#9b681d);box-shadow:0 14px 30px rgba(0,0,0,.3)}
+.promo-vip-badge span{font-family:Poppins,sans-serif;font-size:28px;font-weight:900;line-height:1;color:#171006}.promo-vip-badge small{margin-top:5px;font-size:7px;letter-spacing:1px;font-weight:900;color:#271b08}
+.promo-copy h2{font-family:Poppins,sans-serif;font-size:30px;letter-spacing:-1.2px;margin:6px 0 7px}.promo-copy h2 em{color:var(--gold);font-style:normal}.promo-copy p{max-width:650px;margin:0;color:#9b9489;font-size:11px;line-height:1.65}.promo-points{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:14px}.promo-points span{font-size:8px;font-weight:800;color:#d2cbc0;letter-spacing:.15px}.promo-points span::first-letter{color:var(--gold)}
+.promo-group-btn{position:relative;z-index:2;min-width:205px;min-height:54px;padding:0 20px;border-radius:12px;background:linear-gradient(135deg,#f0ca69,#b77d22);box-shadow:0 12px 28px rgba(226,182,83,.18);font-size:10px;letter-spacing:.4px}.nav-vip{color:var(--gold)!important}
+@media(max-width:900px){.promo-group-inner{grid-template-columns:72px minmax(0,1fr);gap:18px;padding:28px 24px}.promo-vip-badge{width:68px;height:68px;border-radius:18px}.promo-vip-badge span{font-size:23px}.promo-group-btn{grid-column:1/-1;width:100%}}
+@media(max-width:760px){.promo-group{padding:28px 16px 42px}.promo-group-inner{grid-template-columns:58px minmax(0,1fr);gap:13px;padding:22px 16px;border-radius:20px}.promo-vip-badge{width:58px;height:58px;border-radius:15px}.promo-vip-badge span{font-size:20px}.promo-vip-badge small{font-size:5px}.promo-copy h2{font-size:22px;line-height:1.12;margin:4px 0 6px}.promo-copy p{font-size:9px;line-height:1.55}.promo-points{display:grid;grid-template-columns:1fr;gap:6px;margin-top:11px}.promo-points span{font-size:8px}.promo-group-btn{min-height:50px;font-size:9px}.nav-vip{display:block}}
