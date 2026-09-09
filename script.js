@@ -7,8 +7,18 @@ const search=document.querySelector('#catalog-search');
 const resultCount=document.querySelector('#result-count');
 const emptyState=document.querySelector('#empty-state');
 const backTop=document.querySelector('#back-top');
+const toast=document.querySelector('#toast');
 let currentCategory='todos';
 let searchTimer;
+let toastTimer;
+
+function showToast(message){
+  if(!toast)return;
+  toast.textContent=message;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>toast.classList.remove('show'),2200);
+}
 
 function whatsappUrl(product=''){
   const message=product?`?text=${encodeURIComponent(`Olá! Gostaria de consultar informações sobre ${product} na NEXUS IMPORTS.`)}`:'';
@@ -72,6 +82,7 @@ search?.addEventListener('input',()=>{
 });
 
 function openWhatsApp(product){
+  showToast('Abrindo WhatsApp…');
   window.open(whatsappUrl(product||'um produto'),'_blank','noopener');
 }
 document.querySelectorAll('.product-action').forEach(button=>button.addEventListener('click',()=>openWhatsApp(button.dataset.wa||'um produto')));
@@ -101,24 +112,59 @@ backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'})
 updateCatalog('todos');
 
 
-// Troca de cor/foto dos iPhones
+// Troca sincronizada de cor/foto dos iPhones
 document.querySelectorAll('.catalog-product[data-name^="iphone"]').forEach(card => {
   const img = card.querySelector('.iphone-color-image');
   const label = card.querySelector('.iphone-color-label');
-  const dots = card.querySelectorAll('.color-dot');
+  const dots = [...card.querySelectorAll('.color-dot')];
+  const action = card.querySelector('.product-action');
   if (!img || !dots.length) return;
+
+  // Pré-carrega todas as fotos para a troca ficar instantânea.
+  dots.forEach(dot => {
+    const preload = new Image();
+    preload.src = dot.dataset.image || '';
+  });
+
+  let selectedColor = dots[0].dataset.color || '';
+
   const setColor = dot => {
     const color = dot.dataset.color || '';
-    img.src = dot.dataset.image;
+    const image = dot.dataset.image || '';
+    if (!image) return;
+
+    selectedColor = color;
+    img.src = image;
     img.alt = `${card.querySelector('h4')?.textContent || 'iPhone'} ${color}`;
+
     const storage = (card.querySelector('p')?.textContent.match(/\d+ GB/) || [''])[0];
     if (label) label.textContent = `${storage} • ${color} • Consulte disponibilidade.`;
+
     dots.forEach(d => {
       const selected = d === dot;
       d.classList.toggle('active', selected);
       d.setAttribute('aria-pressed', String(selected));
     });
+
+    if (action) action.dataset.wa = `${card.querySelector('h4')?.textContent || 'iPhone'} — ${color}`;
   };
-  dots.forEach((dot,i) => dot.addEventListener('click', () => setColor(dot)));
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      setColor(dot);
+      showToast(`Cor selecionada: ${dot.dataset.color || ''}`);
+    });
+    dot.addEventListener('keydown', e => {
+      if (!['ArrowRight','ArrowLeft'].includes(e.key)) return;
+      e.preventDefault();
+      const index = dots.indexOf(dot);
+      const next = e.key === 'ArrowRight'
+        ? dots[(index + 1) % dots.length]
+        : dots[(index - 1 + dots.length) % dots.length];
+      next.focus();
+      setColor(next);
+    });
+  });
+
   setColor(dots[0]);
 });
