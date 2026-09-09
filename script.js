@@ -86,7 +86,7 @@ window.addEventListener('keydown',e=>{
 const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');revealObserver.unobserve(entry.target);}}),{threshold:.08});
 document.querySelectorAll('.section-head,.category-card,.catalog-category,.trust-strip>div').forEach(el=>{el.classList.add('reveal');revealObserver.observe(el);});
 
-const sectionIds=['inicio','categorias','catalogo'];
+const sectionIds=['inicio','categorias','promocoes','catalogo'];
 const navLinks=[...document.querySelectorAll('.nav-link')];
 const sectionObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)navLinks.forEach(link=>link.classList.toggle('active',link.getAttribute('href')===`#${entry.target.id}`));}),{rootMargin:'-35% 0px -55% 0px'});
 sectionIds.forEach(id=>{const el=document.getElementById(id);if(el)sectionObserver.observe(el);});
@@ -99,3 +99,26 @@ window.addEventListener('scroll',()=>backTop?.classList.toggle('show',window.scr
 backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
 updateCatalog('todos');
+
+
+// Troca de cor/foto dos iPhones
+document.querySelectorAll('.catalog-product[data-name^="iphone"]').forEach(card => {
+  const img = card.querySelector('.iphone-color-image');
+  const label = card.querySelector('.iphone-color-label');
+  const dots = card.querySelectorAll('.color-dot');
+  if (!img || !dots.length) return;
+  const setColor = dot => {
+    const color = dot.dataset.color || '';
+    img.src = dot.dataset.image;
+    img.alt = `${card.querySelector('h4')?.textContent || 'iPhone'} ${color}`;
+    const storage = (card.querySelector('p')?.textContent.match(/\d+ GB/) || [''])[0];
+    if (label) label.textContent = `${storage} • ${color} • Consulte disponibilidade.`;
+    dots.forEach(d => {
+      const selected = d === dot;
+      d.classList.toggle('active', selected);
+      d.setAttribute('aria-pressed', String(selected));
+    });
+  };
+  dots.forEach((dot,i) => dot.addEventListener('click', () => setColor(dot)));
+  setColor(dots[0]);
+});
