@@ -503,3 +503,38 @@ footer{padding-top:42px}
 .hero-banner{aspect-ratio:auto !important;height:auto !important;overflow:hidden !important;}
 .hero-banner img{width:100% !important;height:auto !important;aspect-ratio:auto !important;object-fit:contain !important;display:block !important;}
 @media(max-width:760px){.hero-banner{aspect-ratio:auto !important;height:auto !important;} .hero-banner img{height:auto !important;width:100% !important;object-fit:contain !important;}}
+
+
+/* ===== Banner NEXUS — proporção original restaurada ===== */
+.hero-banner{
+  width:100%;
+  max-width:590px;
+  aspect-ratio:1717 / 916 !important;
+  height:auto !important;
+  overflow:hidden !important;
+  border-radius:24px;
+}
+.hero-banner img{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+}
+@media(max-width:900px){
+  .hero-banner{width:100%;max-width:720px;aspect-ratio:1717 / 916 !important;height:auto !important;justify-self:stretch;}
+}
+@media(max-width:760px){
+  .hero-banner{
+    width:100% !important;
+    max-width:none !important;
+    aspect-ratio:1717 / 916 !important;
+    height:auto !important;
+    border-radius:18px;
+  }
+  .hero-banner img{
+    width:100% !important;
+    height:100% !important;
+    object-fit:contain !important;
+  }
+}
