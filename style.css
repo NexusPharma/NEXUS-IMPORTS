@@ -268,3 +268,10 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:35px max(24px,calc((10
   .mobile-bottom-nav{grid-template-columns:repeat(4, 60px) !important; column-gap:10px !important;}
   .mobile-bottom-nav a{width:60px !important;}
 }
+
+
+/* Foco no fechamento 1x1 pelo WhatsApp */
+.catalog-consult{display:flex;align-items:center;min-height:29px;margin:0 0 15px;color:var(--gold);font-size:9px;font-weight:800;letter-spacing:.15px}
+.product-action{min-height:42px;font-size:9.5px;box-shadow:0 8px 22px rgba(226,182,83,.10)}
+.catalog-product:hover .product-action{box-shadow:0 10px 28px rgba(226,182,83,.16)}
+@media(max-width:760px){.catalog-consult{min-height:39px;font-size:8px;line-height:1.35}.product-action{min-height:39px;font-size:8.5px}}

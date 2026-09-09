@@ -21,7 +21,7 @@ function showToast(message){
 }
 
 function whatsappUrl(product=''){
-  const message=product?`?text=${encodeURIComponent(`Olá! Gostaria de consultar informações sobre ${product} na NEXUS IMPORTS.`)}`:'';
+  const message=product?`?text=${encodeURIComponent(`Olá! Vim pelo catálogo da NEXUS IMPORTS e gostaria de atendimento individual sobre ${product}. Pode me passar disponibilidade, valor e condições?`)}`:'';
   return `https://wa.me/${WHATSAPP}${message}`;
 }
 
