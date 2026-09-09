@@ -1,3 +1,2 @@
-NEXUS IMPORTS — catálogo atualizado com imagens adicionais.
-
-Publique todos os arquivos mantendo a estrutura de pastas.
+# NEXUS IMPORTS
+Catálogo premium da NEXUS IMPORTS. Esta versão inclui as imagens atualizadas do catálogo, incluindo Retatrutida ZPHC 60mg e Tirzedral 15mg.

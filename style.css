@@ -275,3 +275,225 @@ footer{border-top:1px solid rgba(255,255,255,.07);padding:35px max(24px,calc((10
 .product-action{min-height:42px;font-size:9.5px;box-shadow:0 8px 22px rgba(226,182,83,.10)}
 .catalog-product:hover .product-action{box-shadow:0 10px 28px rgba(226,182,83,.16)}
 @media(max-width:760px){.catalog-consult{min-height:39px;font-size:8px;line-height:1.35}.product-action{min-height:39px;font-size:8.5px}}
+
+
+/* ===== NEXUS IMPORTS — refinamento de layout ===== */
+.site-header{box-shadow:0 8px 28px rgba(0,0,0,.14)}
+.hero{min-height:610px;padding-top:62px;padding-bottom:62px}
+.hero-copy{max-width:590px}
+.hero-sub{max-width:500px}
+.hero-banner{max-width:590px;justify-self:end}
+.categories{padding-top:84px;padding-bottom:84px}
+.category-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:1160px;margin:0 auto}
+.category-card{min-height:320px}
+.category-card:nth-child(2){background:linear-gradient(145deg,#11100e,#0a0908)}
+.category-card:nth-child(3){background:linear-gradient(145deg,#13110e,#0a0908)}
+.catalog{padding-top:86px;padding-bottom:96px}
+.catalog-heading{padding-bottom:6px}
+.catalog-heading>div{max-width:720px}
+.catalog-whatsapp{padding:11px 15px;border:1px solid rgba(226,182,83,.22);border-radius:999px;background:rgba(226,182,83,.05)}
+.catalog-toolbar{padding:12px;border:1px solid rgba(255,255,255,.065);border-radius:16px;background:rgba(9,8,7,.76);backdrop-filter:blur(14px);position:sticky;top:72px;z-index:20}
+.catalog-result{margin-top:12px}
+.catalog-category{padding:30px 0 10px;margin-bottom:54px;border-top:1px solid rgba(255,255,255,.055)}
+.catalog-category:first-child{border-top:0;padding-top:0}
+.category-title{align-items:center;margin-bottom:24px}
+.category-title>div:last-child{flex:1}
+.category-title h3{font-size:30px}
+.category-title p{max-width:680px}
+.category-index{min-width:32px;width:32px;height:32px;border:1px solid rgba(226,182,83,.28);border-radius:10px;display:grid;place-items:center;padding:0;background:rgba(226,182,83,.05)}
+.catalog-product-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.catalog-product{display:flex;flex-direction:column;min-width:0;background:linear-gradient(180deg,#11100e,#0c0b09)}
+.catalog-product-image{height:250px}
+.catalog-product-info{display:flex;flex-direction:column;flex:1;padding:16px}
+.catalog-product-info h4{min-height:44px;display:flex;align-items:flex-start;margin:6px 0 4px}
+.catalog-product-info p{margin-bottom:10px}
+.iphone-colors{min-height:24px}
+.product-action{margin-top:auto;min-height:42px}
+.real-product img{padding:4px}
+.how-it-works{padding-top:84px;padding-bottom:84px;background:linear-gradient(180deg,rgba(226,182,83,.025),transparent)}
+.how-steps{gap:14px}
+.how-step{min-height:220px;background:linear-gradient(145deg,#11100e,#0a0908)}
+.promo-group{padding-top:20px;padding-bottom:84px}
+.promo-group-inner{padding:32px 34px}
+.promo-copy h2{font-family:Poppins,sans-serif;font-size:clamp(26px,3.5vw,40px);line-height:1.08;margin:8px 0}
+.promo-group-btn{white-space:nowrap}
+.faq{padding-top:84px}
+footer{padding-top:42px}
+@media(max-width:1050px){
+  .catalog-product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .hero{grid-template-columns:1fr 1fr;gap:30px}
+  .hero-banner{justify-self:stretch}
+}
+@media(max-width:760px){
+  .hero{min-height:auto;padding-top:42px;padding-bottom:48px}
+  .hero-banner{max-width:none}
+  .categories{padding-top:58px;padding-bottom:58px}
+  .category-grid{display:flex;max-width:none}
+  .catalog{padding-top:58px;padding-bottom:70px}
+  .catalog-toolbar{position:sticky;top:60px;padding:9px;border-radius:14px}
+  .catalog-result{margin-top:10px}
+  .catalog-category{padding-top:22px;margin-bottom:38px}
+  .category-title{margin-bottom:18px}
+  .category-title h3{font-size:24px}
+  .catalog-product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .catalog-product-image{height:190px}
+  .catalog-product-info{padding:12px}
+  .catalog-product-info h4{font-size:14px;min-height:36px}
+  .catalog-product-info p{font-size:8px;min-height:36px}
+  .product-action{min-height:39px;font-size:8px}
+  .promo-group{padding-top:8px;padding-bottom:58px}
+  .promo-group-inner{grid-template-columns:auto 1fr;gap:16px;padding:22px 18px}
+  .promo-icon{display:none}
+  .promo-group-btn{grid-column:1/-1;width:100%}
+  .how-it-works{padding-top:58px;padding-bottom:58px}
+  .faq{padding-top:58px}
+}
+@media(max-width:380px){
+  .catalog-product-grid{grid-template-columns:1fr}
+  .catalog-product-image{height:220px}
+}
+
+/* ===== CARDS PREMIUM — padronização visual sem trocar as fotos ===== */
+.catalog-product{
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  min-height:438px;
+  border:1px solid rgba(226,182,83,.12);
+  border-radius:20px;
+  background:linear-gradient(145deg,#12100d 0%,#0b0a08 100%);
+  box-shadow:0 16px 45px rgba(0,0,0,.24),inset 0 1px 0 rgba(255,255,255,.025);
+  overflow:hidden;
+}
+.catalog-product:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(135deg,rgba(255,255,255,.025),transparent 28%,transparent 72%,rgba(226,182,83,.025));
+  z-index:0;
+}
+.catalog-product-image{
+  height:248px;
+  flex:0 0 248px;
+  margin:0;
+  padding:18px;
+  display:grid;
+  place-items:center;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(226,182,83,.10),transparent 34%),
+    radial-gradient(circle at 50% 100%,rgba(255,255,255,.035),transparent 48%),
+    linear-gradient(180deg,#14120f 0%,#0a0908 100%);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.catalog-product-image:before{
+  content:"";
+  position:absolute;
+  width:72%;
+  height:38%;
+  left:14%;
+  bottom:7%;
+  border-radius:50%;
+  background:radial-gradient(ellipse,rgba(0,0,0,.42),transparent 68%);
+  filter:blur(8px);
+  pointer-events:none;
+}
+.catalog-product-image:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.025),transparent 28%,rgba(0,0,0,.12));pointer-events:none;z-index:2}
+.catalog-product-image img{
+  position:relative;
+  z-index:1;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain;
+  object-position:center;
+  filter:drop-shadow(0 16px 18px rgba(0,0,0,.30));
+  transition:transform .35s ease,filter .35s ease;
+}
+.catalog-product:hover .catalog-product-image img{transform:scale(1.025);filter:drop-shadow(0 20px 24px rgba(0,0,0,.38))}
+.catalog-product-image.product-photo{background:linear-gradient(180deg,#f5f4f0 0%,#e9e7e1 100%);padding:16px}
+.catalog-product-image.product-photo:before{background:radial-gradient(ellipse,rgba(0,0,0,.16),transparent 68%)}
+.catalog-product-image.product-photo:after{background:linear-gradient(180deg,rgba(255,255,255,.10),transparent 35%,rgba(0,0,0,.05));}
+.catalog-product-image.real-product{background:linear-gradient(180deg,#f6f5f2 0%,#ebe9e3 100%);padding:14px 18px}
+.catalog-product-image.real-product:before{background:radial-gradient(ellipse,rgba(0,0,0,.14),transparent 68%)}
+.catalog-product-image.real-product img{object-fit:contain;padding:4px;filter:drop-shadow(0 14px 15px rgba(0,0,0,.18));}
+.catalog-product-info{
+  position:relative;
+  z-index:3;
+  display:flex;
+  flex-direction:column;
+  flex:1;
+  min-width:0;
+  padding:17px 17px 16px;
+}
+.catalog-product-info>span{font-size:7px;letter-spacing:1.8px;color:#81796d}
+.catalog-product-info h4{
+  font-size:17px;
+  line-height:1.18;
+  min-height:40px;
+  margin:6px 0 5px;
+  display:flex;
+  align-items:flex-start;
+}
+.catalog-product-info p{
+  font-size:9px;
+  line-height:1.5;
+  min-height:29px;
+  margin:0 0 12px;
+  color:#80796f;
+}
+.catalog-product-info .iphone-colors{margin-top:auto;margin-bottom:11px;min-height:24px}
+.catalog-product-info .product-action{margin-top:auto;min-height:42px;border-radius:11px;box-shadow:0 8px 22px rgba(226,182,83,.08);letter-spacing:.1px}
+
+/* Separação visual das categorias */
+.catalog-category{position:relative}
+.catalog-category[data-category="emagrecedores"],
+.catalog-category[data-category="peptideos"]{padding-top:8px}
+.catalog-category[data-category="emagrecedores"] .category-title,
+.catalog-category[data-category="peptideos"] .category-title{padding-top:20px}
+.category-title{position:relative}
+.category-title:after{content:"";position:absolute;left:0;right:0;bottom:-10px;height:1px;background:linear-gradient(90deg,rgba(226,182,83,.25),rgba(255,255,255,.04),transparent 75%)}
+
+/* Pequeno selo visual no canto dos cards de produtos */
+.catalog-category[data-category="emagrecedores"] .catalog-product:after,
+.catalog-category[data-category="peptideos"] .catalog-product:after{
+  content:"CONSULTA";
+  position:absolute;
+  top:12px;
+  right:12px;
+  z-index:5;
+  padding:5px 7px;
+  border:1px solid rgba(226,182,83,.20);
+  border-radius:999px;
+  background:rgba(8,7,6,.72);
+  color:var(--gold);
+  font-size:6px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  backdrop-filter:blur(8px);
+}
+
+@media(max-width:900px){
+  .catalog-product{min-height:430px}
+  .catalog-product-image{height:220px;flex-basis:220px}
+}
+@media(max-width:760px){
+  .catalog-product{min-height:385px;border-radius:17px}
+  .catalog-product-image{height:178px;flex-basis:178px;padding:10px}
+  .catalog-product-image.real-product{padding:9px 12px}
+  .catalog-product-info{padding:13px 12px 12px}
+  .catalog-product-info h4{font-size:14px;min-height:35px}
+  .catalog-product-info p{font-size:8px;min-height:34px;margin-bottom:9px}
+  .catalog-product-info .product-action{min-height:38px;font-size:8px;border-radius:10px}
+  .catalog-category[data-category="emagrecedores"] .catalog-product:after,
+  .catalog-category[data-category="peptideos"] .catalog-product:after{top:8px;right:8px;font-size:5px;padding:4px 5px}
+}
+@media(max-width:380px){
+  .catalog-product{min-height:370px}
+  .catalog-product-image{height:190px;flex-basis:190px}
+}
