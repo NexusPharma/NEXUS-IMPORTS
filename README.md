@@ -1,10 +1,7 @@
-# NEXUS IMPORTS — arquivos corrigidos
+# NEXUS IMPORTS
+Arquivos atualizados a partir dos arquivos enviados pelo usuário.
 
-Alterações aplicadas:
-- Removido o CTA de WhatsApp do cabeçalho.
-- Botão "Falar no WhatsApp" do Hero redesenhado em preto/dourado com ícone WhatsApp.
-- Seletor de cores dos iPhones sincronizado com foto, nome da cor e botão de consulta.
-- Fotos das variantes pré-carregadas para troca mais rápida.
-- Navegação por teclado entre as cores.
-- Links visíveis "Ver no Atacado Connect" removidos.
-- Mantida a seção do grupo de promoções do WhatsApp.
+## Alteração desta versão
+- Seção “Como funciona” / passo a passo redesenhada para desktop e celular.
+- No celular, os passos aparecem em sequência vertical com conexão visual.
+- Mantidas as demais funcionalidades e conteúdo dos arquivos de origem.
