@@ -83,6 +83,7 @@ search?.addEventListener('input',()=>{
 
 function openWhatsApp(product){
   showToast('Abrindo WhatsApp…');
+  if(typeof gtag==='function')gtag('event','contact_whatsapp',{product:product||'um produto'});
   window.open(whatsappUrl(product||'um produto'),'_blank','noopener');
 }
 document.querySelectorAll('.product-action').forEach(button=>button.addEventListener('click',()=>openWhatsApp(button.dataset.wa||'um produto')));
@@ -112,59 +113,27 @@ backTop?.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'})
 updateCatalog('todos');
 
 
-// Troca sincronizada de cor/foto dos iPhones
+// Troca de cor/foto dos iPhones
 document.querySelectorAll('.catalog-product[data-name^="iphone"]').forEach(card => {
   const img = card.querySelector('.iphone-color-image');
   const label = card.querySelector('.iphone-color-label');
-  const dots = [...card.querySelectorAll('.color-dot')];
-  const action = card.querySelector('.product-action');
+  const dots = card.querySelectorAll('.color-dot');
   if (!img || !dots.length) return;
-
-  // Pré-carrega todas as fotos para a troca ficar instantânea.
-  dots.forEach(dot => {
-    const preload = new Image();
-    preload.src = dot.dataset.image || '';
-  });
-
-  let selectedColor = dots[0].dataset.color || '';
-
   const setColor = dot => {
     const color = dot.dataset.color || '';
-    const image = dot.dataset.image || '';
-    if (!image) return;
-
-    selectedColor = color;
-    img.src = image;
+    img.src = dot.dataset.image;
     img.alt = `${card.querySelector('h4')?.textContent || 'iPhone'} ${color}`;
-
     const storage = (card.querySelector('p')?.textContent.match(/\d+ GB/) || [''])[0];
     if (label) label.textContent = `${storage} • ${color} • Consulte disponibilidade.`;
-
     dots.forEach(d => {
       const selected = d === dot;
       d.classList.toggle('active', selected);
       d.setAttribute('aria-pressed', String(selected));
     });
-
-    if (action) action.dataset.wa = `${card.querySelector('h4')?.textContent || 'iPhone'} — ${color}`;
   };
-
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
-      setColor(dot);
-      showToast(`Cor selecionada: ${dot.dataset.color || ''}`);
-    });
-    dot.addEventListener('keydown', e => {
-      if (!['ArrowRight','ArrowLeft'].includes(e.key)) return;
-      e.preventDefault();
-      const index = dots.indexOf(dot);
-      const next = e.key === 'ArrowRight'
-        ? dots[(index + 1) % dots.length]
-        : dots[(index - 1 + dots.length) % dots.length];
-      next.focus();
-      setColor(next);
-    });
-  });
-
+  dots.forEach((dot,i) => dot.addEventListener('click', () => {
+    setColor(dot);
+    showToast(`Cor selecionada: ${dot.dataset.color || ''}`);
+  }));
   setColor(dots[0]);
 });
