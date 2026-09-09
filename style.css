@@ -538,3 +538,36 @@ footer{padding-top:42px}
     object-fit:contain !important;
   }
 }
+
+/* ===== CORREÇÃO MOBILE DO BANNER ===== */
+@media (max-width: 760px){
+  .hero{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+  }
+  .hero-copy{
+    width:100% !important;
+    max-width:none !important;
+  }
+  .hero-banner{
+    display:block !important;
+    width:100% !important;
+    max-width:none !important;
+    margin:36px 0 0 !important;
+    padding:0 !important;
+    height:auto !important;
+    aspect-ratio:auto !important;
+    overflow:hidden !important;
+    border-radius:18px !important;
+  }
+  .hero-banner img{
+    display:block !important;
+    width:100% !important;
+    height:auto !important;
+    max-width:100% !important;
+    object-fit:initial !important;
+    object-position:center !important;
+  }
+  .hero-banner .banner-cta{display:none !important;}
+}
